@@ -1,7 +1,8 @@
 import Sequelize from 'sequelize';
 import mongoose from 'mongoose';
 
-import configDatabase from '../config/database';
+import databaseConfig from "../config/database.js";
+
 
 import User from '../app/models/User';
 import Product from '../app/models/Product';
@@ -16,7 +17,7 @@ class Database {
   }
 
   init() {
-    this.connection = new Sequelize(configDatabase);
+    this.connection = new Sequelize(databaseConfig);
     models
       .map((model) => model.init(this.connection))
       .map(
